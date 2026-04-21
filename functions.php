@@ -17,9 +17,7 @@ add_action( 'after_setup_theme', 'theme_setup' );
 /* Register menu */
     function register_my_menu() {
       register_nav_menu('header-menu',__( 'Header Menu' ));
-      register_nav_menu('footer-menu-1',__( 'Footer menu 1' ));
-      register_nav_menu('footer-menu-2',__( 'Footer menu 2' ));
-      register_nav_menu('footer-menu-3',__( 'Footer menu 3' ));
+      register_nav_menu('footer-menu',__( 'Footer menu' ));
     }
     add_action( 'init', 'register_my_menu' );
 /* Register menu end */
@@ -51,16 +49,15 @@ function theme_scripts() {
   // css
     wp_enqueue_style( 'theme-style', get_stylesheet_uri(), array(), _S_VERSION );
     wp_enqueue_style( 'bootstrap-css',get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.min.css');
-    wp_enqueue_style( 'custom-styles', get_template_directory_uri() . '/assets/css/style.min.css', array(), '1.0' );
-    wp_enqueue_style('slick-css', get_template_directory_uri() . '/assets/slick/css/slick.min.css', array(), '1.8.1');
-    wp_enqueue_style('slick-theme-css',  get_template_directory_uri() . '/assets/slick/css/slick-theme.min.css', array('slick-css'), '1.8.1');
-    wp_enqueue_style( 'additional-styles', get_template_directory_uri() . '/assets/custom/css/custom.css', array(), '1.0' );
+    wp_enqueue_style( 'bootstrap-icons-css',get_template_directory_uri() . '/assets/bootstrap/css/bootstrap-icons.min.css');
+    wp_enqueue_style( 'animate-css',get_template_directory_uri() . '/assets/plugins/css/animate.min.css');
+    wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/assets/theme/css/style.css', array(), '1.0' );
+    wp_enqueue_style( 'additional-styles', get_template_directory_uri() . '/assets/css/style.min.css', array(), '1.0' );
     wp_style_add_data( 'theme-style', 'rtl', 'replace' );
   // js
     wp_enqueue_script('bootstrap-js',get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.bundle.min.js',array('jquery'), _S_VERSION, true );
-    wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/assets/js/main.min.js', array(), _S_VERSION, true );
-    wp_enqueue_script('slick-js', get_template_directory_uri() . '/assets/slick/js/slick.min.js', array('jquery'), '1.8.1', true);
-    wp_enqueue_script( 'additional-js', get_template_directory_uri() . '/assets/custom/js/custom.js', array(), _S_VERSION, true );
+    wp_enqueue_script('theme-js',get_template_directory_uri() . '/assets/theme/js/main.js',array('jquery'), _S_VERSION, true );
+    wp_enqueue_script('additional-js', get_template_directory_uri() . '/assets/js/main.min.js', array(), _S_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
 
@@ -69,13 +66,10 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 
 // custom functions
     require get_template_directory() . '/includes/custom.php';
-    require get_template_directory() . '/includes/image-sizes.php';
 // custom functions end
 
 // CPT
     require get_template_directory() . '/includes/cpt/career.php';
-    require get_template_directory() . '/includes/cpt/expertise.php';
-    require get_template_directory() . '/includes/cpt/event.php';
 // CPT end
 
 // Remove editor for 'Page' and 'Expertises' custom post type
@@ -84,29 +78,6 @@ add_filter('wpcf7_autop_or_not', '__return_false');
     remove_post_type_support( 'page', 'editor' );
   }
   add_action( 'init', 'remove_editor_for_event_cpt' );
-// end
-
-// Submenu wrapper 
-class Custom_Submenu_Walker extends Walker_Nav_Menu {
-  // Start the submenu
-  function start_lvl( &$output, $depth = 0, $args = null ) {
-    $indent = str_repeat("\t", $depth);
-    $submenu_class = ($depth > 0) ? 'sub-menu inner-sub-menu' : 'sub-menu';
-    // Only wrap the first submenu (depth 0)
-    if ($depth === 0) {
-      $output .= "\n$indent<div class=\"submenu-wrapper\"><div class=\"container\">\n";
-    }
-    $output .= "$indent<ul class=\"$submenu_class\">\n";
-  }
-  // End the submenu
-  function end_lvl( &$output, $depth = 0, $args = null ) {
-    $indent = str_repeat("\t", $depth);
-    $output .= "$indent</ul>\n";
-    if ($depth === 0) {
-      $output .= "$indent</div></div>\n";
-    }
-  }
-}
 // end
 
 
