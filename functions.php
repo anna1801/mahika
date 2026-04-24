@@ -17,7 +17,8 @@ add_action( 'after_setup_theme', 'theme_setup' );
 /* Register menu */
     function register_my_menu() {
       register_nav_menu('header-menu',__( 'Header Menu' ));
-      register_nav_menu('footer-menu',__( 'Footer menu' ));
+      register_nav_menu('footer-menu-1',__( 'Footer menu 1' ));
+      register_nav_menu('footer-menu-2',__( 'Footer menu 2' ));
     }
     add_action( 'init', 'register_my_menu' );
 /* Register menu end */

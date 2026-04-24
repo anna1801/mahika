@@ -82,22 +82,6 @@ $font-5xl: 80px * $font-scale;
   --theme-alt-bg-color: #F7F6FF;
 }
 
-.product-card a {
-  text-decoration: none;
-}
-
-.product-card .product-body .badge-cats {
-  padding: 0;
-  margin: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-#categories a {
-  text-decoration: none;
-}
-
 /* latin-ext */
 @font-face {
   font-family: 'Aladin';
@@ -200,3 +184,4 @@ $font-5xl: 80px * $font-scale;
   margin-right: -50vw;
   width: 100vw;
 }
+/*# sourceMappingURL=style.css.map */
