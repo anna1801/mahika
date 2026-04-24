@@ -98,5 +98,46 @@ add_filter('woocommerce_weight_unit', function() {
     return 'g';
 });
 
+// custom styl class for WYSIWYG Editor
+function my_mce_before_init( $settings ) {
+    $style_formats = array(
+        array(
+            'title' => 'font-size-15',
+            'block' => 'span',
+            'classes' => 'font-size-15',
+            'wrapper' => true,
+        ),
+    );
+    $settings['style_formats'] = json_encode( $style_formats );
+    return $settings;
+}
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init' );
+function my_mce_buttons( $buttons ) {
+    $position = array_search( 'bold', $buttons );
+    if ( $position !== false ) {
+        array_splice( $buttons, $position, 0, 'styleselect' );
+    } else {
+        array_unshift( $buttons, 'styleselect' );
+    }
+    return $buttons;
+}
+add_filter( 'mce_buttons', 'my_mce_buttons' );
+
+// validate captcha code in contact form 7
+add_filter('wpcf7_validate_text*', 'custom_captcha_validation', 20, 2);
+function custom_captcha_validation($result, $tag) {
+    if ($tag->name == 'your-captcha') {
+        $generated = isset($_POST['captcha-generated']) ? $_POST['captcha-generated'] : '';
+        $entered   = isset($_POST['your-captcha']) ? $_POST['your-captcha'] : '';
+        if (strtoupper($entered) !== strtoupper($generated)) {
+            $result->invalidate($tag, "Incorrect CAPTCHA, please try again.");
+        }
+    }
+    return $result;
+}
+
+
+
+
 
 ?>

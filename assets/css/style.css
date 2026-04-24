@@ -82,8 +82,12 @@ $font-5xl: 80px * $font-scale;
   --theme-alt-bg-color: #F7F6FF;
 }
 
-.product-card a {
+a {
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--rust) !important;
 }
 
 .product-card .product-body .badge-cats {
@@ -94,8 +98,19 @@ $font-5xl: 80px * $font-scale;
   display: flex;
 }
 
-#categories a {
-  text-decoration: none;
+.intro-body p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.intro-body h3 {
+  font-family: 'Aladin', system-ui;
+  font-size: 2.22rem;
+  color: #8B0000;
+  font-weight: 400;
+  margin: 2.5rem 0 1rem;
 }
 
 /* latin-ext */

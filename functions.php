@@ -70,7 +70,7 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 // custom functions end
 
 // CPT
-    require get_template_directory() . '/includes/cpt/career.php';
+    //require get_template_directory() . '/includes/cpt/career.php';
 // CPT end
 
 // Remove editor for 'Page' and 'Expertises' custom post type
@@ -81,6 +81,13 @@ add_filter('wpcf7_autop_or_not', '__return_false');
   add_action( 'init', 'remove_editor_for_event_cpt' );
 // end
 
+// style for editor
+function my_mce_css( $mce_css ) {
+  $mce_css .= ',' . get_template_directory_uri() . '/editor/editor-style.css';
+  return $mce_css;
+}
+add_filter( 'mce_css', 'my_mce_css' );
+// end
 
 
 ?>
