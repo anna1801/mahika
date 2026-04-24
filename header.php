@@ -36,10 +36,10 @@
                 <a href="register.html"><i class="bi bi-person-plus me-2"></i>Register</a>
                 <hr class="m-0 opacity-10">
                 <a href="my-account.html"><i class="bi bi-person-circle me-2"></i>My Account</a>
-                <a href="wishlist.html"><i class="bi bi-heart me-2"></i>My Wishlist</a>
+                <a href="<?php echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>"><i class="bi bi-heart me-2"></i>My Wishlist</a>
               </div>
             </div>
-            <a href="wishlist.html" class="nav-icon-btn"><i class="bi bi-heart"></i></a>
+            <a href="<?php echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>" class="nav-icon-btn"><i class="bi bi-heart"></i></a>
             <a href="javascript:void(0)" class="nav-icon-btn" id="mobileCartTrigger"><i class="bi bi-bag"></i></a>
           </div>
           <!-- to do end -->
@@ -80,10 +80,10 @@
                 <a href="register.html"><i class="bi bi-person-plus me-2"></i>Register</a>
                 <hr class="m-0 opacity-10">
                 <a href="my-account.html"><i class="bi bi-person-circle me-2"></i>My Account</a>
-                <a href="wishlist.html"><i class="bi bi-heart me-2"></i>My Wishlist</a>
+                <a href="<?php echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>"><i class="bi bi-heart me-2"></i>My Wishlist</a>
               </div>
             </div>
-            <a href="wishlist.html" class="nav-icon-btn"><i class="bi bi-heart"></i></a>
+            <a href="<?php echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>" class="nav-icon-btn"><i class="bi bi-heart"></i></a>
             <a href="javascript:void(0)" class="nav-icon-btn" id="cartTrigger">
               <i class="bi bi-bag"></i>
               <span class="cart-badge">3</span>

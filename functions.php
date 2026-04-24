@@ -67,6 +67,7 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 
 // custom functions
     require get_template_directory() . '/includes/custom.php';
+    require get_template_directory() . '/template/wishlist.php'; 
 // custom functions end
 
 // CPT
@@ -74,11 +75,11 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 // CPT end
 
 // Remove editor for 'Page' and 'Expertises' custom post type
-  function remove_editor_for_event_cpt() {
-    remove_post_type_support( 'expertises', 'editor' );
-    remove_post_type_support( 'page', 'editor' );
-  }
-  add_action( 'init', 'remove_editor_for_event_cpt' );
+  // function remove_editor_for_event_cpt() {
+  //   remove_post_type_support( 'expertises', 'editor' );
+  //   remove_post_type_support( 'page', 'editor' );
+  // }
+  // add_action( 'init', 'remove_editor_for_event_cpt' );
 // end
 
 // style for editor

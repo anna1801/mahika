@@ -82,12 +82,21 @@ $font-5xl: 80px * $font-scale;
   --theme-alt-bg-color: #F7F6FF;
 }
 
-a {
-  text-decoration: none;
+.loader-logo {
+  height: 70px !important;
 }
 
-a:hover {
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+a:not(.btn):hover {
   color: var(--rust) !important;
+}
+
+.product-card .product-body .product-name {
+  min-height: 45px;
 }
 
 .product-card .product-body .badge-cats {
@@ -96,6 +105,14 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.product-card .yith-add-to-wishlist-button-block .yith-wcwl-add-to-wishlist-button .yith-wcwl-icon-svg {
+  width: 16px;
+}
+
+.product-card .yith-add-to-wishlist-button-block .yith-wcwl-add-to-wishlist-button .yith-wcwl-add-to-wishlist-button__label {
+  display: none;
 }
 
 .intro-body p {
@@ -111,6 +128,41 @@ a:hover {
   color: #8B0000;
   font-weight: 400;
   margin: 2.5rem 0 1rem;
+}
+
+.woocommerce .added_to_cart.wc-forward {
+  display: none;
+}
+
+.btn.btn-rust.disabled {
+  background: var(--rust);
+  color: #fff;
+}
+
+.wishlist-title {
+  display: none;
+}
+
+.wishlist table tbody tr .price del {
+  font-size: .95rem;
+  color: #a32222;
+  font-weight: 500;
+}
+
+.wishlist table tbody tr .price ins {
+  text-decoration: none;
+}
+
+@media (max-width: 820px) {
+  .wishlist table tbody tr .btn.add_to_cart_button {
+    font-size: 0.625em;
+    min-width: 100px;
+    padding: 8px 14px !important;
+  }
+}
+
+.wishlist table tbody tr:last-child td {
+  border-bottom: 0;
 }
 
 /* latin-ext */
