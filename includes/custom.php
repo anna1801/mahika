@@ -67,11 +67,15 @@ class Footer_Menu_Walker extends Walker_Nav_Menu {
     function start_lvl(&$output, $depth = 0, $args = null) {}
     function end_lvl(&$output, $depth = 0, $args = null) {}
     function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+        $classes = !empty($item->classes) ? implode(' ', $item->classes) : '';
+        $output .= '<div class="' . esc_attr($classes) . '">';
         $output .= '<a href="' . esc_url($item->url) . '">';
         $output .= esc_html($item->title);
         $output .= '</a>';
     }
-    function end_el(&$output, $item, $depth = 0, $args = null) {}
+    function end_el(&$output, $item, $depth = 0, $args = null) {
+        $output .= '</div>';
+    }
 }
 
 // custom field Origin n product page to display use "$origin = get_post_meta($post->ID, '_product_origin', true);"

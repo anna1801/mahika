@@ -6,9 +6,9 @@
       <div class="row g-4">
         <?php
           echo '<div class="col-md-4">';
-            $logo = get_field('logo', 'option');
-            if($logo) :
-              echo '<img src="'.$logo['url'].'" class="logo-white mb-3" alt="'.$logo['alt'].'" />';
+            $footer_logo = get_field('footer_logo', 'option');
+            if($footer_logo) :
+              echo '<img src="'.$footer_logo['url'].'" class="logo-white mb-3" alt="'.$footer_logo['alt'].'" />';
             endif;
 
             $footer_about = get_field('footer_about', 'option');
@@ -65,14 +65,14 @@
               endif;
               while( have_rows('contact_details', 'option') ): the_row();
                 $icon = get_sub_field('icon');
-                $url = get_sub_field('url');
                 $value = get_sub_field('value');
-                if($url) {
-                  $link = $url;
+                if($icon == 'telephone-fill') {
+                  echo '<p><a href="tel:'.$value.'"><i class="bi bi-'.$icon.' me-1 custom-style-8"></i>'.$value.'</a></p>';
+                } elseif($icon == 'envelope-fill') {
+                  echo '<p><a href="mailto:'.$value.'"><i class="bi bi-'.$icon.' me-1 custom-style-8"></i>'.$value.'</a></p>';
                 } else {
-                  $link = 'javascript:void(0)';
+                  echo '<p><i class="bi bi-'.$icon.' me-1 custom-style-8"></i>'.$value.'</p>';
                 }
-                echo '<p><a href="'.$link.'"><i class="bi bi-'.$icon.' me-1 custom-style-8"></i>'.$value.'</a></p>';
               endwhile;
             echo '</div>';
           endif;

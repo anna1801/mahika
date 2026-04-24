@@ -73,6 +73,10 @@ $font-5xl: 80px * $font-scale;
   }
 }
 
+header #mainNav .current-menu-item .nav-link {
+  color: var(--rust) !important;
+}
+
 :root {
   --e-global-color-primary: #FFFFFF;
   --e-global-color-secondary: #29282B;
@@ -88,11 +92,7 @@ $font-5xl: 80px * $font-scale;
 
 a {
   text-decoration: none;
-  color: initial;
-}
-
-a:not(.btn):hover {
-  color: var(--rust) !important;
+  color: unset;
 }
 
 .product-card .product-body .product-name {
@@ -163,6 +163,10 @@ a:not(.btn):hover {
 
 .wishlist table tbody tr:last-child td {
   border-bottom: 0;
+}
+
+footer .menu-sitemap-container .current-menu-item a {
+  color: var(--gold);
 }
 
 /* latin-ext */

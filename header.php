@@ -19,9 +19,9 @@
     <nav class="navbar navbar-expand-lg" id="mainNav">
       <div class="container">
         <?php
-          $logo = get_field('logo', 'option');
-          if($logo) :
-            echo '<a class="navbar-brand" href="'.site_url().'"><img src="'.$logo['url'].'" alt="'.$logo['alt'].'" /></a>';
+          $header_logo = get_field('header_logo', 'option');
+          if($header_logo) :
+            echo '<a class="navbar-brand" href="'.site_url().'"><img src="'.$header_logo['url'].'" alt="'.$header_logo['alt'].'" /></a>';
           endif;
         ?>
         <div class="d-flex align-items-center gap-2 order-lg-3">

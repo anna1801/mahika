@@ -1,3 +1,9 @@
 footer {
-
+    .menu-sitemap-container {
+        .current-menu-item {
+            a {
+                color: var(--gold);
+            }
+        }
+    }
 }

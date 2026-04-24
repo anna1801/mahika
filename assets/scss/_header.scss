@@ -1,3 +1,9 @@
 header {
-    
+    #mainNav {
+        .current-menu-item {
+            .nav-link {
+                color: var(--rust) !important;
+            }
+        }
+    }
 }
