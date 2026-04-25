@@ -140,6 +140,13 @@ function custom_captcha_validation($result, $tag) {
     return $result;
 }
 
+// Add class to body of archive-product.php
+add_filter('body_class', function ($classes) {
+    if (is_shop() || is_post_type_archive('product')) {
+        $classes[] = 'products-page';
+    }
+    return $classes;
+});
 
 
 

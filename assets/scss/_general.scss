@@ -92,3 +92,20 @@ a {
         }
     }
 }
+#ajax-pagination {
+    .paginatoin-area {
+        .page-link-custom {
+            &.disabled {
+                pointer-events: none;
+                opacity: 0.3;
+            }
+        } 
+    }
+}
+.toolbar {
+    .view-toggle {
+        @media (max-width: 519px) {
+            display: none;
+        }
+    }
+}

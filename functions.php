@@ -68,11 +68,8 @@ add_filter('wpcf7_autop_or_not', '__return_false');
 // custom functions
     require get_template_directory() . '/includes/custom.php';
     require get_template_directory() . '/template/wishlist.php'; 
+    require get_template_directory() . '/ajax/products-filter.php'; 
 // custom functions end
-
-// CPT
-    //require get_template_directory() . '/includes/cpt/career.php';
-// CPT end
 
 // Remove editor for 'Page' and 'Expertises' custom post type
   // function remove_editor_for_event_cpt() {
@@ -90,5 +87,11 @@ function my_mce_css( $mce_css ) {
 add_filter( 'mce_css', 'my_mce_css' );
 // end
 
+// Support woocommerce
+function mytheme_add_woocommerce_support() {
+  add_theme_support('woocommerce');
+}
+add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+// end
 
 ?>
