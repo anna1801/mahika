@@ -180,7 +180,32 @@ add_action('add_meta_boxes_comment', function () {
     );
 });
 
+// auto update number of products in cart to the header shop icon
+add_filter( 'woocommerce_add_to_cart_fragments', 'update_cart_count_fragment' );
+function update_cart_count_fragment( $fragments ) {
+    ob_start();
+    ?>
+    <div class="auto-cart-count notification">
+        <?php echo WC()->cart->get_cart_contents_count(); ?>
+    </div>
+    <?php
+    $fragments['.auto-cart-count.notification'] = ob_get_clean();
+    return $fragments;
+}
 
+// minicart ajax
+add_filter( 'woocommerce_add_to_cart_fragments', 'custom_minicart_fragment' );
+function custom_minicart_fragment( $fragments ) {
+    ob_start();
+    get_template_part('ajax/minicart');
+    $fragments['.woocommerce-minicart-fragments'] = ob_get_clean();
+    return $fragments;
+}
+
+// Ajax add to cart support
+add_action( 'wp_enqueue_scripts', function() {
+    wp_enqueue_script( 'wc-cart-fragments' );
+});
 
 
 

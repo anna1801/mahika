@@ -3,3 +3,4 @@ import './slider.js';
 import './general.js'; 
 import './archive.js'; 
 import './product.js'; 
+import './header.js';

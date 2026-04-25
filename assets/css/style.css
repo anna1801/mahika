@@ -77,6 +77,20 @@ header #mainNav .current-menu-item .nav-link {
   color: var(--rust) !important;
 }
 
+#cartTrigger .auto-cart-count {
+  position: absolute;
+  top: -12px;
+  left: 26px;
+  background-color: var(--gold);
+  padding: 0px 7px;
+  border-radius: 50px;
+  border: 2px solid #fff;
+  color: #fff !important;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
 :root {
   --e-global-color-primary: #FFFFFF;
   --e-global-color-secondary: #29282B;
@@ -93,6 +107,10 @@ header #mainNav .current-menu-item .nav-link {
 a {
   text-decoration: none;
   color: unset;
+}
+
+.product-card .added_to_cart.wc-forward {
+  display: none;
 }
 
 .product-card .product-body .product-name {
@@ -128,10 +146,6 @@ a {
   color: #8B0000;
   font-weight: 400;
   margin: 2.5rem 0 1rem;
-}
-
-.woocommerce .added_to_cart.wc-forward {
-  display: none;
 }
 
 .btn.btn-rust.disabled {

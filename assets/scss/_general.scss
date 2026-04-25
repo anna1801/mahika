@@ -6,6 +6,11 @@ a {
     color: unset;
 }
 .product-card {
+    .added_to_cart{
+        &.wc-forward {
+            display: none;
+        }
+    }
     .product-body {
         .product-name {
             min-height: 45px;
@@ -40,13 +45,6 @@ a {
         color: #8B0000;
         font-weight: 400;
         margin: 2.5rem 0 1rem;
-    }
-}
-.woocommerce {
-    .added_to_cart{
-        &.wc-forward {
-            display: none;
-        }
     }
 }
 .btn {
