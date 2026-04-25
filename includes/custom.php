@@ -140,13 +140,46 @@ function custom_captcha_validation($result, $tag) {
     return $result;
 }
 
-// Add class to body of archive-product.php
+// Add class to body 
 add_filter('body_class', function ($classes) {
     if (is_shop() || is_post_type_archive('product')) {
         $classes[] = 'products-page';
+    } elseif ( is_singular('product') ) {
+        $classes[] = 'product-detail-page';
     }
     return $classes;
 });
+
+// Save and Show phone on review table (dahboard)
+add_action('comment_post', function ($comment_id) {
+    if (isset($_POST['phone']) && !empty($_POST['phone'])) {
+        $phone = sanitize_text_field($_POST['phone']);
+        add_comment_meta($comment_id, 'phone', $phone);
+    }
+}, 10, 1);
+add_action('add_meta_boxes_comment', function () {
+    add_meta_box(
+        'comment-phone',
+        'Custom fields',
+        function ($comment) {
+            $phone = get_comment_meta($comment->comment_ID, 'phone', true);
+            ?>
+            <table class="form-table">
+                <tbody>
+                    <tr>
+                        <td style="width: 10%;"><label for="phone">Phone</label></td>
+                        <td style="width: 90%;"><input type="text" name="phone" value="<?php echo esc_html($phone ?: 'N/A'); ?>" id="phone" readonly style="width: 100%;"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <?php
+        },
+        'comment',
+        'normal',
+        'high'
+    );
+});
+
 
 
 

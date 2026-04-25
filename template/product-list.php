@@ -43,9 +43,21 @@
           endif;
         ?>
         <div class="product-name"><a href="<?php echo $link; ?>"><?php echo $title; ?></a></div>
-        <!-- to do -->
-        <div class="stars">★★★★★</div>
-        <!-- to do end-->
+        <div class="stars">
+          <?php
+            $average = $product->get_average_rating();
+            $review_count = $product->get_review_count();
+          ?>
+          <?php
+            for ($i = 1; $i <= 5; $i++) {
+              if ($i <= floor($average)) {
+                echo '<i class="bi bi-star-fill"></i>'; 
+              } else {
+                echo '<i class="bi bi-star"></i>'; 
+              }
+            }
+          ?>
+        </div>
         <div class="product-price mt-1">
           <?php
             if($product->is_on_sale()) {

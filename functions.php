@@ -52,11 +52,13 @@ function theme_scripts() {
     wp_enqueue_style( 'bootstrap-css',get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.min.css');
     wp_enqueue_style( 'bootstrap-icons-css',get_template_directory_uri() . '/assets/bootstrap/css/bootstrap-icons.min.css');
     wp_enqueue_style( 'animate-css',get_template_directory_uri() . '/assets/plugins/css/animate.min.css');
+    wp_enqueue_style( 'glightbox-css',get_template_directory_uri() . '/assets/plugins/css/glightbox.min.css');
     wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/assets/theme/css/style.css', array(), '1.0' );
     wp_enqueue_style( 'additional-styles', get_template_directory_uri() . '/assets/css/style.min.css', array(), '1.0' );
     wp_style_add_data( 'theme-style', 'rtl', 'replace' );
   // js
     wp_enqueue_script('bootstrap-js',get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.bundle.min.js',array('jquery'), _S_VERSION, true );
+    wp_enqueue_script('glightbox-js', get_template_directory_uri() . '/assets/plugins/js/glightbox.min.js', array(), _S_VERSION, true );
     wp_enqueue_script('additional-js', get_template_directory_uri() . '/assets/js/main.min.js', array(), _S_VERSION, true );
     wp_enqueue_script('theme-js',get_template_directory_uri() . '/assets/theme/js/main.js',array('jquery'), _S_VERSION, true );
 }
@@ -69,6 +71,7 @@ add_filter('wpcf7_autop_or_not', '__return_false');
     require get_template_directory() . '/includes/custom.php';
     require get_template_directory() . '/template/wishlist.php'; 
     require get_template_directory() . '/ajax/products-filter.php'; 
+    require get_template_directory() . '/ajax/add_to_cart.php'; 
 // custom functions end
 
 // Remove editor for 'Page' and 'Expertises' custom post type

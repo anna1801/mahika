@@ -176,6 +176,50 @@ a {
   }
 }
 
+#product-detail .btn-wishlist .yith-wcwl-add-to-wishlist-button .yith-wcwl-icon {
+  color: var(--muted);
+  width: 23px;
+}
+
+#product-detail .btn-wishlist .yith-wcwl-add-to-wishlist-button .yith-wcwl-icon:hover {
+  color: var(--rust);
+}
+
+#product-detail .btn-wishlist .yith-wcwl-add-to-wishlist-button.yith-wcwl-add-to-wishlist-button--added .yith-wcwl-icon {
+  color: var(--rust);
+}
+
+#product-detail .btn-wishlist .yith-wcwl-add-to-wishlist-button .yith-wcwl-add-to-wishlist-button__label {
+  display: none;
+}
+
+#product-detail #tab-desc ul,
+#product-detail #tab-desc ol {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 2;
+}
+
+#product-detail #tab-reviews .reviews .review:not(:last-child) {
+  border-bottom: 1px solid #3a1b0a0a;
+}
+
+#product-detail #tab-reviews .rating-stars .stars {
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+#product-detail #tab-reviews .rating-stars .stars span {
+  color: #ccc;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+#product-detail #tab-reviews .rating-stars .stars span.active {
+  color: var(--gold);
+}
+
 footer .menu-sitemap-container .current-menu-item a {
   color: var(--gold);
 }
