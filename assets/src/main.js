@@ -5,4 +5,5 @@ import './archive.js';
 import './product.js'; 
 import './header.js';
 import './cart.js';
-import './checkout.js';
+import './checkout.js'; 
+import './account.js'; 

@@ -445,6 +445,14 @@ a {
   margin-top: 2rem !important;
 }
 
+.auth-wrapper .woocommerce-privacy-policy-text {
+  display: none;
+}
+
+.auth-wrapper.hidden {
+  display: none !important;
+}
+
 footer .menu-sitemap-container .current-menu-item a {
   color: var(--gold);
 }

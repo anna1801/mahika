@@ -1,5 +1,6 @@
 <?php
     if (is_page()) {
+
         $page_title = get_field('page_title');
         if($page_title) {
             $title = $page_title;
@@ -7,10 +8,16 @@
             $title = get_the_title();
         }
         $current = get_the_title();
+
+        if( is_account_page() && !is_user_logged_in() ) {
+            $title = 'Login';
+            $current = 'Login';
+        }
+
     } elseif (is_search()) {
         $title = 'Search Results';
         $current = 'Showing results for "'. get_search_query().'"';
-    } elseif (is_shop()) {
+    }elseif (is_shop()) {
         $title = get_the_title(wc_get_page_id('shop'));
         $current = get_the_title(wc_get_page_id('shop'));
     } elseif ( is_singular('product') ) {

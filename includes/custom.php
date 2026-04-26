@@ -250,4 +250,47 @@ add_filter('woocommerce_form_field', function($field, $key, $args, $value) {
 // hide coupon at checkout
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
+// Validate custom registration fields (full name and Phone number)
+add_action( 'woocommerce_register_post', function( $username, $email, $validation_errors ) {
+    if ( isset($_POST['createaccount']) ) {
+        return; // Skip validation if account created from checkout
+    }
+    if ( empty( $_POST['full_name'] ) || empty( trim( $_POST['full_name'] ) ) ) {
+        $validation_errors->add( 'full_name_error', 'Please enter your full name.' );
+    }
+    if ( empty( $_POST['phone_number'] ) || empty( trim( $_POST['phone_number'] ) ) ) {
+        $validation_errors->add( 'phone_number_error', 'Please enter your phone number.' );
+    }
+    return $validation_errors;
+}, 10, 3 );
+
+// Save custom registration fields  (full name and Phone number)
+add_action( 'woocommerce_created_customer', function( $customer_id ) {
+    if ( isset( $_POST['full_name'] ) ) {
+        $full_name = sanitize_text_field( $_POST['full_name'] );
+        update_user_meta( $customer_id, 'full_name', $full_name );
+        $name_parts = explode( ' ', $full_name );
+        $first_name = $name_parts[0];
+        $last_name  = '';
+        if ( count( $name_parts ) > 1 ) {
+            array_shift( $name_parts );
+            $last_name = implode( ' ', $name_parts );
+        }
+        update_user_meta( $customer_id, 'first_name', $first_name );
+        update_user_meta( $customer_id, 'last_name', $last_name );
+        update_user_meta( $customer_id, 'billing_first_name', $first_name );
+        update_user_meta( $customer_id, 'billing_last_name', $last_name );
+    }
+    if ( isset( $_POST['phone_number'] ) ) {
+        $phone = sanitize_text_field( $_POST['phone_number'] );
+        update_user_meta( $customer_id, 'phone_number', $phone );
+        update_user_meta( $customer_id, 'billing_phone', $phone ); 
+    }
+});
+
+// Disable WooCommerce password strength requirement
+add_filter( 'woocommerce_min_password_strength', function() {
+    return 0; 
+});
+
 ?>
