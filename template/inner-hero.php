@@ -1,6 +1,11 @@
 <?php
     if (is_page()) {
-        $title = get_the_title();
+        $page_title = get_field('page_title');
+        if($page_title) {
+            $title = $page_title;
+        } else {
+            $title = get_the_title();
+        }
         $current = get_the_title();
     } elseif (is_search()) {
         $title = 'Search Results';

@@ -4,3 +4,4 @@ import './general.js';
 import './archive.js'; 
 import './product.js'; 
 import './header.js';
+import './cart.js';
