@@ -10,15 +10,16 @@ header {
 #cartTrigger {
     .auto-cart-count {
         position: absolute;
-        top: -12px;
-        left: 26px;
+        top: -10px;
+        left: 24px;
         background-color: var(--gold);
         padding: 0px 7px;
         border-radius: 50px;
         border: 2px solid #fff;
         color: #fff !important;
-        width: 30px;
-        height: 30px;
+        width: 26px;
+        height: 26px;
         text-align: center;
+        font-size: 14px;
     }
 }

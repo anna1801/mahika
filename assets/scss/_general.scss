@@ -20,6 +20,13 @@ a {
             margin: 0;
             display: flex;
         }
+        &.search-body {
+            .product-price {
+                span {
+                    font-weight: 400;
+                }
+            }
+        }
     }
     .yith-add-to-wishlist-button-block {
         .yith-wcwl-add-to-wishlist-button {

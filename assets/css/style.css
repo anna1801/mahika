@@ -79,16 +79,17 @@ header #mainNav .current-menu-item .nav-link {
 
 #cartTrigger .auto-cart-count {
   position: absolute;
-  top: -12px;
-  left: 26px;
+  top: -10px;
+  left: 24px;
   background-color: var(--gold);
   padding: 0px 7px;
   border-radius: 50px;
   border: 2px solid #fff;
   color: #fff !important;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   text-align: center;
+  font-size: 14px;
 }
 
 :root {
@@ -123,6 +124,10 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.product-card .product-body.search-body .product-price span {
+  font-weight: 400;
 }
 
 .product-card .yith-add-to-wishlist-button-block .yith-wcwl-add-to-wishlist-button .yith-wcwl-icon-svg {
@@ -339,4 +344,22 @@ footer .menu-sitemap-container .current-menu-item a {
   margin-left: -50vw;
   margin-right: -50vw;
   width: 100vw;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+  border-color: #98cc9d;
+  background-color: #c9eccc;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output {
+  border-color: #ffb900;
+  background-color: #f6db95;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0;
 }

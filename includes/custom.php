@@ -207,6 +207,28 @@ add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_script( 'wc-cart-fragments' );
 });
 
+// force search.php template
+add_filter('template_include', 'force_search_template', 99);
+function force_search_template($template) {
+    if (is_search()) {
+        $new_template = locate_template(array('search.php'));
+        if ($new_template) {
+            return $new_template; 
+        }
+    }
+    return $template;
+}
+
+// remove WooCommerce's wc_query effect during search
+add_action('pre_get_posts', 'remove_wc_query_from_search', 5);
+function remove_wc_query_from_search($query) {
+    if (!is_admin() && $query->is_main_query() && $query->is_search()) {
+        $query->set('wc_query', false);
+        $query->is_post_type_archive = false;
+        $query->is_archive = false;
+        $query->set('post_type', 'product');
+    }
+}
 
 
 ?>

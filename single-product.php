@@ -277,7 +277,7 @@
             <?php endforeach; ?>
           </div>
 
-          <form action="<?php echo esc_url(site_url('/wp-comments-post.php')); ?>" method="post">
+          <form action="<?php echo esc_url(site_url('/wp-comments-post.php')); ?>" method="post" class="reviewform">
             <div class="mt-4 p-3 rounded-3 custom-style-53">
               <h6 class="custom-style-58">Leave a Review</h6>
               <div class="row g-3">

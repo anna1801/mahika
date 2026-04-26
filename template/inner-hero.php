@@ -2,6 +2,9 @@
     if (is_page()) {
         $title = get_the_title();
         $current = get_the_title();
+    } elseif (is_search()) {
+        $title = 'Search Results';
+        $current = 'Showing results for "'. get_search_query().'"';
     } elseif (is_shop()) {
         $title = get_the_title(wc_get_page_id('shop'));
         $current = get_the_title(wc_get_page_id('shop'));
@@ -15,7 +18,7 @@
             $title = implode(' / ', $names);
         }
         $current = get_the_title();
-    }
+    } 
 ?>
 <section id="page-hero">
     <div class="page-hero-bg"></div>

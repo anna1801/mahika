@@ -87,96 +87,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 2000);
   };
 
-  // ── CAPTCHA logic
-  window.generateCaptcha = function () {
-    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let code = '';
-    for (let i = 0; i < 5; i++) {
-      code += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    const codeEl = document.getElementById('captchaCode');
-    if (codeEl) codeEl.textContent = code;
-    const inputEl = document.getElementById('captchaInput');
-    if (inputEl) inputEl.value = '';
-    const errorEl = document.getElementById('captchaError');
-    if (errorEl) errorEl.style.display = 'none';
-
-    document.getElementById("captchaCode").innerText = code;
-    document.getElementById("captchaExpected").value = code;
-  };
-
-  // Initialize captcha on load
-  generateCaptcha();
-
-  /*
-  const reviewForm = document.querySelector('#tab-reviews form');
-  if (reviewForm) {
-    reviewForm.addEventListener('submit', function (e) {
-      const codeEl = document.getElementById('captchaCode');
-      const inputEl = document.getElementById('captchaInput');
-      if (!codeEl || !inputEl) return;
-
-      const code = codeEl.textContent;
-      const input = inputEl.value;
-      if (input.toUpperCase() !== code) {
-        e.preventDefault();
-        const errorEl = document.getElementById('captchaError');
-        if (errorEl) errorEl.style.display = 'block';
-        generateCaptcha();
-        return;
-      }
-      // If correct, let it submit (or mock it)
-      e.preventDefault();
-      alert('Review submitted for moderation!');
-      this.reset();
-      generateCaptcha();
-    });
-  }
-  */
-
-  const reviewForm = document.querySelector('#tab-reviews form');
-  if (reviewForm) {
-    reviewForm.addEventListener('submit', function (e) {
-      const codeEl = document.getElementById('captchaCode');
-      const inputEl = document.getElementById('captchaInput');
-      if (!codeEl || !inputEl) return;
-      const code = codeEl.textContent.trim();
-      const input = inputEl.value.trim().toUpperCase();
-      const errorEl = document.getElementById('captchaError');
-      if (input !== code) {
-        e.preventDefault();
-        if (errorEl) {
-          errorEl.style.display = 'block';
-          errorEl.textContent = 'Incorrect CAPTCHA';
-        }
-        generateCaptcha();
-        return;
-      }
-      if (errorEl) errorEl.style.display = 'none';
-    });
-  }
-
   /* phone number validation */
-  document.querySelector('input[name="phone"]').addEventListener('input', function () {
-    this.value = this.value.replace(/[^0-9+\-]/g, '');
-  });
+  const phoneInput = document.querySelector('.reviewform input[name="phone"]');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function () {
+      this.value = this.value.replace(/[^0-9+\-]/g, '');
+    });
+  }
 
   /* star rating */
   const stars = document.querySelectorAll('#ratingStars span');
   const ratingInput = document.getElementById('ratingValue');
-  function setRating(value) {
-    ratingInput.value = value;
-  
+  if(ratingInput) {
+    function setRating(value) {
+      ratingInput.value = value;
+    
+      stars.forEach((star, index) => {
+        star.classList.toggle('active', index < value);
+      });
+    }
     stars.forEach((star, index) => {
-      star.classList.toggle('active', index < value);
+      star.addEventListener('click', () => {
+        setRating(index + 1);
+      });
     });
+    setRating(5); // set default
   }
-  stars.forEach((star, index) => {
-    star.addEventListener('click', () => {
-      setRating(index + 1);
-    });
-  });
-  setRating(0); // set default
 
 });
 

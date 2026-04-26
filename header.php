@@ -68,8 +68,11 @@
                   $placeholder = 'Search';
                 }
               ?>
-              <input type="text" class="search-input" placeholder="<?php echo $placeholder; ?>" />
-              <button class="search-btn"><i class="bi bi-search"></i></button>
+              <form role="search" method="get" class="header-search-box" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                  <input type="text" value="<?php echo esc_attr( get_search_query() ); ?>" name="s" placeholder="<?php echo $placeholder; ?>" class="search-input">
+                  <input type="hidden" name="post_type" value="product">
+                  <button type="submit" class="search-btn"><i class="bi bi-search"></i></button>
+              </form>
             </div>
             <div class="user-dropdown-wrapper position-relative">
               <a href="javascript:void(0)" class="nav-icon-btn">
@@ -96,23 +99,7 @@
 
     <div class="overlay" id="cartOverlay"></div>
 
-
-
     <?php get_template_part('ajax/minicart'); ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- to do -->
   </header>
 <main>
