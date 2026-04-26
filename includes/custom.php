@@ -230,5 +230,24 @@ function remove_wc_query_from_search($query) {
     }
 }
 
+// Add classes for checkout form fields
+add_filter('woocommerce_form_field_args', function($args) {
+    $args['input_class'][] = 'form-control';
+    $args['label_class'][] = 'form-label small fw-bold';
+    return $args;
+});
+
+// Remove default classes from checkout form fields
+add_filter('woocommerce_form_field', function($field, $key, $args, $value) {
+    $field = str_replace(
+        ['input-text', 'woocommerce-input-wrapper', 'form-row', 'validate-required'],
+        '',
+        $field
+    );
+    return $field;
+}, 10, 4);
+
+// hide coupon at checkout
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
 ?>

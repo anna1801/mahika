@@ -2,7 +2,15 @@
 
 <?php get_template_part('template/inner-hero'); ?>
 
-<section class="py-5">
+<?php 
+    if ( is_checkout() ) {
+        $class = 'bg-light';
+    } else {
+        $class = '';
+    }
+?>
+
+<section class="py-5 <?php echo $class; ?> ">
     <div class="container py-4">
         <?php the_content(); ?>
     </div>
