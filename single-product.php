@@ -197,10 +197,9 @@
             <tbody>
               <?php
                 if ( ! empty( $weight ) ) {
-                  $weight_g = $weight * 1000;
                   echo  '<tr>
                           <th class="custom-style-51">Weight</th>
-                          <td>'.$weight_g.'g</td>
+                          <td>'.$weight.'g</td>
                         </tr>';
                 }
 

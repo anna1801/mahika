@@ -145,7 +145,7 @@ do_action( 'woocommerce_before_cart' );
           <?php endif; ?>
           <?php if ( wc_tax_enabled() && ! WC()->cart->display_prices_including_tax() ) : ?>
             <?php foreach ( WC()->cart->get_tax_totals() as $code => $tax ) : ?>
-              <div class="d-flex justify-content-between mb-3 border-bottom pb-3">
+              <div class="d-flex justify-content-between">
                 <span class="text-muted"><?php echo esc_html( $tax->label ); ?></span>
                 <span class="fw-bold"><?php echo wp_kses_post( $tax->formatted_amount ); ?></span>
               </div>

@@ -488,6 +488,10 @@ a {
   border-color: transparent !important;
 }
 
+.products-page .cat-link {
+  cursor: pointer;
+}
+
 footer .menu-sitemap-container .current-menu-item a {
   color: var(--gold);
 }
