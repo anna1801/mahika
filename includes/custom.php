@@ -142,7 +142,7 @@ function custom_captcha_validation($result, $tag) {
 
 // Add class to body 
 add_filter('body_class', function ($classes) {
-    if (is_shop() || is_post_type_archive('product')) {
+    if (is_shop() || is_post_type_archive('product') ||  is_product_category()) {
         $classes[] = 'products-page';
     } elseif ( is_singular('product') ) {
         $classes[] = 'product-detail-page';

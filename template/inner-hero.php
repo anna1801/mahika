@@ -30,7 +30,11 @@
             $title = implode(' / ', $names);
         }
         $current = get_the_title();
-    } 
+    } elseif ( is_product_category() ) {
+        $category = get_queried_object();
+        $title = $category->name; 
+        $current = $category->name; 
+    }
 ?>
 <section id="page-hero">
     <div class="page-hero-bg"></div>

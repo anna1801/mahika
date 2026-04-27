@@ -131,7 +131,7 @@
         echo '</div>';
         $pagination_html = ob_get_clean();
 
-        $product_count_text = "Showing {$start}–{$end} of {$total_products} results";
+        $product_count_text = "Showing <strong>{$start}–{$end}</strong> of <strong>{$total_products}</strong> results";
 
         wp_send_json(array(
             'products'   => $products_html,
