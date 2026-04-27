@@ -453,6 +453,12 @@ a {
   display: none !important;
 }
 
+.auth-wrapper .auth-redirect span {
+  color: var(--rust-dk);
+  font-weight: 600;
+  cursor: pointer;
+}
+
 footer .menu-sitemap-container .current-menu-item a {
   color: var(--gold);
 }

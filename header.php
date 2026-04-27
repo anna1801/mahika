@@ -27,22 +27,27 @@
         <div class="d-flex align-items-center gap-2 order-lg-3">
           <div class="d-flex d-lg-none align-items-center gap-2 me-2">
             <div class="user-dropdown-wrapper position-relative">
-              <a href="javascript:void(0)" class="nav-icon-btn">
-                <i class="bi bi-person"></i>
+              <?php
+                if (is_user_logged_in()) {
+                  $icon = 'person';
+                } else {
+                  $icon = 'person-plus';
+                }
+              ?>
+              <a href="<?php echo wc_get_page_permalink('myaccount'); ?>" class="nav-icon-btn">
+                <i class="bi bi-<?php echo $icon; ?>"></i>
               </a>
-              <!-- to do -->
-              <div class="user-dropdown">
+              <!-- <div class="user-dropdown">
                 <a href="login.html"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a>
                 <a href="register.html"><i class="bi bi-person-plus me-2"></i>Register</a>
                 <hr class="m-0 opacity-10">
                 <a href="my-account.html"><i class="bi bi-person-circle me-2"></i>My Account</a>
-                <a href="<?php echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>"><i class="bi bi-heart me-2"></i>My Wishlist</a>
-              </div>
+                <a href="wishlist.html"><i class="bi bi-heart me-2"></i>My Wishlist</a>
+              </div> -->
             </div>
             <a href="<?php echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>" class="nav-icon-btn"><i class="bi bi-heart"></i></a>
             <a href="javascript:void(0)" class="nav-icon-btn" id="mobileCartTrigger"><i class="bi bi-bag"></i></a>
           </div>
-          <!-- to do end -->
           <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
             <i class="bi bi-list fs-4 custom-style-1"></i>
           </button>
@@ -75,16 +80,23 @@
               </form>
             </div>
             <div class="user-dropdown-wrapper position-relative">
-              <a href="javascript:void(0)" class="nav-icon-btn">
-                <i class="bi bi-person"></i>
+              <?php
+                if (is_user_logged_in()) {
+                  $icon = 'person';
+                } else {
+                  $icon = 'person-plus';
+                }
+              ?>
+              <a href="<?php echo wc_get_page_permalink('myaccount'); ?>" class="nav-icon-btn">
+                <i class="bi bi-<?php echo $icon; ?>"></i>
               </a>
-              <div class="user-dropdown">
+              <!-- <div class="user-dropdown">
                 <a href="login.html"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a>
                 <a href="register.html"><i class="bi bi-person-plus me-2"></i>Register</a>
                 <hr class="m-0 opacity-10">
                 <a href="my-account.html"><i class="bi bi-person-circle me-2"></i>My Account</a>
-                <a href="<?php echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>"><i class="bi bi-heart me-2"></i>My Wishlist</a>
-              </div>
+                <a href="wishlist.html"><i class="bi bi-heart me-2"></i>My Wishlist</a>
+              </div> -->
             </div>
             <a href="<?php echo esc_url( YITH_WCWL()->get_wishlist_url() ); ?>" class="nav-icon-btn"><i class="bi bi-heart"></i></a>
             <a href="javascript:void(0)" class="nav-icon-btn" id="cartTrigger">

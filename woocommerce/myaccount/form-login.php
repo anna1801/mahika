@@ -42,7 +42,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
               <?php wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ); ?>
               <button type="submit" class="btn btn-rust w-100 py-2 fw-bold mb-3 shadow-sm custom-style-28 woocommerce-form-login__submit<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Log in', 'woocommerce' ); ?>"><?php esc_html_e( 'Login', 'woocommerce' ); ?></button>
               <?php do_action( 'woocommerce_login_form_end' ); ?>
-              <div class="text-center">
+              <div class="text-center auth-redirect">
                 <p class="small text-muted">Don't have an account? <span id="go_register"> Register Now </span> </p>
               </div>
             </form>
@@ -85,7 +85,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
               <?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
               <button type="submit" class="btn btn-rust w-100 py-2 fw-bold mb-3 mt-4 shadow-sm custom-style-28 <?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?> woocommerce-form-register__submit" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>"><?php esc_html_e( 'Register Now', 'woocommerce' ); ?></button>
               <?php do_action( 'woocommerce_register_form_end' ); ?>
-              <div class="text-center">
+              <div class="text-center auth-redirect">
                 <p class="small text-muted">Already have an account? <span id="go_login"> Login Here</span></p>
               </div>
             </form>

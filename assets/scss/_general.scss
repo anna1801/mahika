@@ -362,4 +362,11 @@ a {
     &.hidden {
         display: none !important;
     }
+    .auth-redirect {
+        span {
+            color: var(--rust-dk);
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
 }
