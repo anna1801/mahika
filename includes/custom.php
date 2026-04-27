@@ -146,6 +146,8 @@ add_filter('body_class', function ($classes) {
         $classes[] = 'products-page';
     } elseif ( is_singular('product') ) {
         $classes[] = 'product-detail-page';
+    } elseif( is_account_page() && is_user_logged_in() ) {
+        $classes[] = 'bg-light';
     }
     return $classes;
 });

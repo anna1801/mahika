@@ -459,6 +459,35 @@ a {
   cursor: pointer;
 }
 
+.woocommerce-account .woocommerce-Button.wc-forward {
+  background: var(--rust);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: .7rem 2rem;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  -webkit-transition: background .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+  transition: background .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+  transition: background .25s, transform .2s, box-shadow .25s;
+  transition: background .25s, transform .2s, box-shadow .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+}
+
+.woocommerce-account .woocommerce-Button.wc-forward:hover {
+  background: var(--rust-dk);
+  color: #fff;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+          box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+}
+
+.my-account-order-table tbody tr:last-child {
+  border-color: transparent !important;
+}
+
 footer .menu-sitemap-container .current-menu-item a {
   color: var(--gold);
 }
