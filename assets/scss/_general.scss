@@ -411,3 +411,49 @@ a {
         text-align: left;
     }
 }
+#add_payment_method {
+    border-radius: 20px;
+    padding: 3rem;
+    background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity));
+    box-shadow: var(--bs-box-shadow-sm);
+    #payment {
+        background: transparent;
+        .payment_methods {
+            border: 0;
+            .woocommerce-PaymentMethod {
+                .woocommerce-PaymentBox {
+                    border-radius: var(--bs-border-radius-lg) !important;
+                    padding: 2rem;
+                    background: #f9f9f9;
+                    box-shadow: 0 4px 20px rgba(58, 27, 10, .12);
+                    &::before {
+                        border-color: #f9f9f9;
+                        border-right-color: transparent;
+                        border-left-color: transparent;
+                        border-top-color: transparent;
+                    }
+                }
+            }
+        }
+        .form-row {
+            #place_order {
+                background: var(--rust);
+                color: #fff;
+                border: none;
+                border-radius: 50px;
+                padding: .7rem 2rem;
+                font-weight: 700;
+                font-size: .9rem;
+                letter-spacing: .05em;
+                text-transform: uppercase;
+                transition: background .25s, transform .2s, box-shadow .25s;
+                &:hover {
+                    background: var(--rust-dk);
+                    color: #fff;
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 24px rgba(192, 57, 43, .35);
+                }
+            }
+        }
+    }
+}

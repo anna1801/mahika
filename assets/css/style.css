@@ -496,6 +496,62 @@ a {
   text-align: left;
 }
 
+#add_payment_method {
+  border-radius: 20px;
+  padding: 3rem;
+  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity));
+  -webkit-box-shadow: var(--bs-box-shadow-sm);
+          box-shadow: var(--bs-box-shadow-sm);
+}
+
+#add_payment_method #payment {
+  background: transparent;
+}
+
+#add_payment_method #payment .payment_methods {
+  border: 0;
+}
+
+#add_payment_method #payment .payment_methods .woocommerce-PaymentMethod .woocommerce-PaymentBox {
+  border-radius: var(--bs-border-radius-lg) !important;
+  padding: 2rem;
+  background: #f9f9f9;
+  -webkit-box-shadow: 0 4px 20px rgba(58, 27, 10, 0.12);
+          box-shadow: 0 4px 20px rgba(58, 27, 10, 0.12);
+}
+
+#add_payment_method #payment .payment_methods .woocommerce-PaymentMethod .woocommerce-PaymentBox::before {
+  border-color: #f9f9f9;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+#add_payment_method #payment .form-row #place_order {
+  background: var(--rust);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: .7rem 2rem;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  -webkit-transition: background .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+  transition: background .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+  transition: background .25s, transform .2s, box-shadow .25s;
+  transition: background .25s, transform .2s, box-shadow .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+}
+
+#add_payment_method #payment .form-row #place_order:hover {
+  background: var(--rust-dk);
+  color: #fff;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+          box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+}
+
 footer .menu-sitemap-container .current-menu-item a {
   color: var(--gold);
 }
