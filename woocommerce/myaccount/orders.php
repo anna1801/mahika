@@ -18,36 +18,35 @@ $customer_orders = wc_get_orders($args);
 ?>
 
 <div class="bg-white p-4 p-md-5 shadow-sm h-100 rounded-20">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h4 class="fw-bold mb-0">My Available Orders</h4>
-    <div class="dropdown">
-      <button class="btn btn-outline-rust btn-sm dropdown-toggle px-3" type="button"
-        data-bs-toggle="dropdown">
-        Filter by Status
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="<?php echo wc_get_account_endpoint_url('orders'); ?>">All Orders</a></li>
-        <li><a class="dropdown-item" href="<?php echo wc_get_account_endpoint_url('orders'); ?>?status=processing">Processing</a></li>
-        <li><a class="dropdown-item" href="<?php echo wc_get_account_endpoint_url('orders'); ?>?status=completed">Completed</a></li>
-        <li><a class="dropdown-item" href="<?php echo wc_get_account_endpoint_url('orders'); ?>?status=cancelled">Cancelled</a></li>
-      </ul>
+  <?php if ($customer_orders->orders) : ?>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4 class="fw-bold mb-0">My Available Orders</h4>
+      <div class="dropdown">
+        <button class="btn btn-outline-rust btn-sm dropdown-toggle px-3" type="button"
+          data-bs-toggle="dropdown">
+          Filter by Status
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="<?php echo wc_get_account_endpoint_url('orders'); ?>">All Orders</a></li>
+          <li><a class="dropdown-item" href="<?php echo wc_get_account_endpoint_url('orders'); ?>?status=processing">Processing</a></li>
+          <li><a class="dropdown-item" href="<?php echo wc_get_account_endpoint_url('orders'); ?>?status=completed">Completed</a></li>
+          <li><a class="dropdown-item" href="<?php echo wc_get_account_endpoint_url('orders'); ?>?status=cancelled">Cancelled</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <div class="table-responsive my-account-order-table">
-    <table class="table align-middle order-table">
-      <thead>
-        <tr>
-          <th class="border-0 px-3 py-3 rounded-start">Order ID</th>
-          <th class="border-0 py-3">Date</th>
-          <th class="border-0 py-3">Status</th>
-          <th class="border-0 py-3">Total</th>
-          <th class="border-0 py-3 rounded-end text-center">Actions</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <?php if ($customer_orders->orders) : ?>
+    <div class="table-responsive my-account-order-table">
+      <table class="table align-middle order-table">
+        <thead>
+          <tr>
+            <th class="border-0 px-3 py-3 rounded-start">Order ID</th>
+            <th class="border-0 py-3">Date</th>
+            <th class="border-0 py-3">Status</th>
+            <th class="border-0 py-3">Total</th>
+            <th class="border-0 py-3 rounded-end text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
           <?php foreach ($customer_orders->orders as $order) : 
             $order = wc_get_order($order);
           ?>
@@ -75,22 +74,25 @@ $customer_orders = wc_get_orders($args);
 
               <td class="text-center py-4">
                 <a href="<?php echo esc_url($order->get_view_order_url()); ?>" 
-                   class="btn btn-sm btn-rust px-4 rounded-pill">
-                   View Details
+                    class="btn btn-sm btn-rust px-4 rounded-pill">
+                    View Details
                 </a>
               </td>
             </tr>
           <?php endforeach; ?>
-        <?php else : ?>
-          <tr>
-            <td colspan="5" class="text-center py-4">
-              No orders found.
-            </td>
-          </tr>
-        <?php endif; ?>
-      </tbody>
-    </table>
-  </div>
+        </tbody>
+      </table>
+    </div>
+  <?php else : ?>
+    <div class="no_order text-center">
+      <i class="bi bi-bag fs-1 text-muted opacity-25"></i>
+      <h5 class="mt-3">No orders found.</h5>
+      <p class="text-muted small">You haven't made any order yet.</p>
+      <a href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>" class="btn btn-rust mt-3 px-4 rounded-pill">
+          Browse Products
+      </a>
+    </div>
+  <?php endif; ?>
 
   <!-- Pagination -->
   <?php if ($customer_orders->max_num_pages > 1) : ?>

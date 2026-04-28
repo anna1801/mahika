@@ -483,3 +483,8 @@ a {
         }
     }
 }
+.my-account-tab-content {
+    .woocommerce-notices-wrapper ~ p {
+        display: none;
+    }
+}
