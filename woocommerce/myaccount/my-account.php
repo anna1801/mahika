@@ -11,7 +11,7 @@ $current_user = wp_get_current_user();
   <div class="col-lg-3 reveal-left">
     <?php /* do_action( 'woocommerce_account_navigation' ); */ ?>
     <div class="account-sidebar bg-white p-3 shadow-sm rounded-20">
-      <div class="p-3 text-center mb-4 border-bottom">
+      <div class="p-3 text-center mb-4 border-bottom user-intro">
         <div class="mx-auto bg-warm rounded-circle d-flex align-items-center justify-content-center mb-3 text-rust custom-style-9">
           <?php echo strtoupper(substr($current_user->display_name, 0, 2)); ?>
         </div>
@@ -30,7 +30,7 @@ $current_user = wp_get_current_user();
     </div>
   </div>
 
-  <div class="col-lg-9 reveal-right">
+  <div class="col-lg-9 reveal-right my-account-tab-content">
     <?php do_action( 'woocommerce_account_content' ); ?>
   </div>
 

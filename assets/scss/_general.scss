@@ -237,22 +237,7 @@ a {
                 }
             }
             button.button {
-                background: transparent;
-                color: var(--rust);
-                border: 2px solid var(--rust);
-                border-radius: 50px;
-                padding: .65rem 1.8rem;
-                font-weight: 700;
-                font-size: .9rem;
-                letter-spacing: .05em;
-                text-transform: uppercase;
-                transition: background .25s, color .25s, transform .2s;
-                margin-top: 14px;
-                &:hover {
-                    background: var(--rust);
-                    color: #fff;
-                    transform: translateY(-2px);
-                }
+                @include rust-button;
             }
         }
     }
@@ -373,22 +358,7 @@ a {
 .woocommerce-account {
     .woocommerce-Button {
         &.wc-forward {
-            background: var(--rust);
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            padding: .7rem 2rem;
-            font-weight: 700;
-            font-size: .9rem;
-            letter-spacing: .05em;
-            text-transform: uppercase;
-            transition: background .25s, transform .2s, box-shadow .25s;
-            &:hover {
-                background: var(--rust-dk);
-                color: #fff;
-                transform: translateY(-2px);
-                box-shadow: 0 8px 24px rgba(192, 57, 43, .35);
-            }
+            @include rust-button;
         }
     }
 }
@@ -413,13 +383,18 @@ a {
 }
 #add_payment_method {
     border-radius: 20px;
-    padding: 3rem;
     background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity));
     box-shadow: var(--bs-box-shadow-sm);
+    @media (min-width: 768px) {
+        padding: 3rem;
+    }
+    @media (max-width: 767px) {
+        padding: 1rem;
+    }
     #payment {
         background: transparent;
         .payment_methods {
-            border: 0;
+            border: 0 !important;
             .woocommerce-PaymentMethod {
                 .woocommerce-PaymentBox {
                     border-radius: var(--bs-border-radius-lg) !important;
@@ -437,23 +412,74 @@ a {
         }
         .form-row {
             #place_order {
-                background: var(--rust);
-                color: #fff;
-                border: none;
-                border-radius: 50px;
-                padding: .7rem 2rem;
-                font-weight: 700;
-                font-size: .9rem;
-                letter-spacing: .05em;
-                text-transform: uppercase;
-                transition: background .25s, transform .2s, box-shadow .25s;
-                &:hover {
-                    background: var(--rust-dk);
-                    color: #fff;
-                    transform: translateY(-2px);
-                    box-shadow: 0 8px 24px rgba(192, 57, 43, .35);
+                @include rust-button;
+            }
+        }
+    }
+}
+.woocommerce-edit-address {
+    .my-account-tab-content {
+        form {
+            border-radius: 20px;
+            background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity));
+            box-shadow: var(--bs-box-shadow-sm);
+            @media (min-width: 768px) {
+                padding: 3rem;
+            }
+            @media (max-width: 767px) {
+                padding: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .woocommerce-address-fields {
+                .woocommerce-address-fields__field-wrapper {
+                    @media (min-width: 768px) {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+
+                        #billing_first_name_field,
+                        #billing_last_name_field,
+                        #billing_city_field,
+                        #billing_state_field,
+                        #billing_postcode_field,
+                        #billing_phone_field,
+                        #shipping_first_name_field,
+                        #shipping_last_name_field,
+                        #shipping_city_field,
+                        #shipping_state_field,
+                        #shipping_postcode_field,
+                        #shipping_phone_field  {
+                            width: 48%;
+                        }
+                        #billing_country_field,
+                        #billing_address_1_field,
+                        #billing_address_2_field,
+                        #billing_email_field,
+                        #shipping_country_field,
+                        #shipping_address_1_field,
+                        #shipping_address_2_field,
+                        #shipping_email_field {
+                            width: 100%;
+                        }
+                    }
+                }
+                button[name="save_address"] {
+                    margin-top: 1rem;
+                    @include rust-button;
                 }
             }
+        }
+    }
+}
+.account-sidebar {
+    .user-intro {
+        @media (max-width: 767px) {
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
         }
     }
 }

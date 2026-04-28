@@ -319,27 +319,27 @@ a {
 }
 
 .cart-summery .shipment-table .shipping-calculator-form button.button {
-  background: transparent;
-  color: var(--rust);
-  border: 2px solid var(--rust);
+  background: var(--rust);
+  color: #fff;
+  border: none;
   border-radius: 50px;
-  padding: .65rem 1.8rem;
+  padding: .7rem 2rem;
   font-weight: 700;
   font-size: .9rem;
   letter-spacing: .05em;
   text-transform: uppercase;
-  -webkit-transition: background .25s, color .25s, -webkit-transform .2s;
-  transition: background .25s, color .25s, -webkit-transform .2s;
-  transition: background .25s, color .25s, transform .2s;
-  transition: background .25s, color .25s, transform .2s, -webkit-transform .2s;
-  margin-top: 14px;
+  -webkit-transition: background .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+  transition: background .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+  transition: background .25s, transform .2s, box-shadow .25s;
+  transition: background .25s, transform .2s, box-shadow .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
 }
 
 .cart-summery .shipment-table .shipping-calculator-form button.button:hover {
-  background: var(--rust);
-  color: #fff;
+  background: var(--rust-dk);
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+          box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
 }
 
 .woocommerce-notices-wrapper {
@@ -477,7 +477,6 @@ a {
 
 .woocommerce-account .woocommerce-Button.wc-forward:hover {
   background: var(--rust-dk);
-  color: #fff;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   -webkit-box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
@@ -498,10 +497,21 @@ a {
 
 #add_payment_method {
   border-radius: 20px;
-  padding: 3rem;
   background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity));
   -webkit-box-shadow: var(--bs-box-shadow-sm);
           box-shadow: var(--bs-box-shadow-sm);
+}
+
+@media (min-width: 768px) {
+  #add_payment_method {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  #add_payment_method {
+    padding: 1rem;
+  }
 }
 
 #add_payment_method #payment {
@@ -509,7 +519,7 @@ a {
 }
 
 #add_payment_method #payment .payment_methods {
-  border: 0;
+  border: 0 !important;
 }
 
 #add_payment_method #payment .payment_methods .woocommerce-PaymentMethod .woocommerce-PaymentBox {
@@ -545,11 +555,109 @@ a {
 
 #add_payment_method #payment .form-row #place_order:hover {
   background: var(--rust-dk);
-  color: #fff;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
   -webkit-box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
           box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+}
+
+.woocommerce-edit-address .my-account-tab-content form {
+  border-radius: 20px;
+  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity));
+  -webkit-box-shadow: var(--bs-box-shadow-sm);
+          box-shadow: var(--bs-box-shadow-sm);
+}
+
+@media (min-width: 768px) {
+  .woocommerce-edit-address .my-account-tab-content form {
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .woocommerce-edit-address .my-account-tab-content form {
+    padding: 2rem;
+  }
+}
+
+.woocommerce-edit-address .my-account-tab-content form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_first_name_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_last_name_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_city_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_state_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_postcode_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_phone_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_first_name_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_last_name_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_city_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_state_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_postcode_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_phone_field {
+    width: 48%;
+  }
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_country_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_address_1_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_address_2_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #billing_email_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_country_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_address_1_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_address_2_field,
+  .woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields .woocommerce-address-fields__field-wrapper #shipping_email_field {
+    width: 100%;
+  }
+}
+
+.woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields button[name="save_address"] {
+  margin-top: 1rem;
+  background: var(--rust);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: .7rem 2rem;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  -webkit-transition: background .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+  transition: background .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+  transition: background .25s, transform .2s, box-shadow .25s;
+  transition: background .25s, transform .2s, box-shadow .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
+}
+
+.woocommerce-edit-address .my-account-tab-content form .woocommerce-address-fields button[name="save_address"]:hover {
+  background: var(--rust-dk);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+          box-shadow: 0 8px 24px rgba(192, 57, 43, 0.35);
+}
+
+@media (max-width: 767px) {
+  .account-sidebar .user-intro {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 footer .menu-sitemap-container .current-menu-item a {
