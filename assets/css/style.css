@@ -492,6 +492,10 @@ a {
   cursor: pointer;
 }
 
+.download-list .text-left {
+  text-align: left;
+}
+
 footer .menu-sitemap-container .current-menu-item a {
   color: var(--gold);
 }
