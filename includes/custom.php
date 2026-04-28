@@ -295,4 +295,34 @@ add_filter( 'woocommerce_min_password_strength', function() {
     return 0; 
 });
 
+// Register status shipped on order
+add_action('init', 'register_shipped_order_status');
+function register_shipped_order_status() {
+    register_post_status('wc-shipped', array(
+        'label'                     => 'Shipped',
+        'public'                    => true,
+        'exclude_from_search'       => false,
+        'show_in_admin_all_list'    => true,
+        'show_in_admin_status_list' => true,
+        'label_count'               => _n_noop('Shipped (%s)', 'Shipped (%s)')
+    ));
+}
+add_filter('wc_order_statuses', 'add_shipped_to_order_statuses');
+function add_shipped_to_order_statuses($order_statuses) {
+    $new_order_statuses = array();
+    foreach ($order_statuses as $key => $status) {
+        $new_order_statuses[$key] = $status;
+        if ('wc-processing' === $key) {
+            $new_order_statuses['wc-shipped'] = 'Shipped';
+        }
+    }
+    return $new_order_statuses;
+}
+
+//Save timestamp when order status changes
+add_action('woocommerce_order_status_changed', 'save_order_status_change_time', 10, 4);
+function save_order_status_change_time($order_id, $old_status, $new_status, $order) {
+    $time = current_time('timestamp');
+    update_post_meta($order_id, '_status_time_' . $new_status, $time);
+}
 ?>

@@ -6,6 +6,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 $current_user = wp_get_current_user();
 ?>
 
+<?php 
+  // order status - for order-details page
+  $order = null;
+  if ( is_wc_endpoint_url('view-order') ) {
+    $order_id = absint( get_query_var('view-order') );
+    if ( $order_id ) {
+      $order = wc_get_order( $order_id );
+    }
+  }
+?>
+
 <div class="row g-4">
 
   <div class="col-lg-3 reveal-left">
@@ -28,6 +39,69 @@ $current_user = wp_get_current_user();
         <a href="<?php echo wc_logout_url(); ?>" class="nav-link text-danger mt-3"><i class="bi bi-box-arrow-right"></i>Logout</a>
       </div>
     </div>
+
+    <?php
+      if ( $order ) :
+        $status = $order->get_status();
+
+        if ( ! in_array($status, [
+          'pending',
+          'on-hold',
+          'cancelled',
+          'refunded',
+          'failed',
+          'checkout-draft'
+          ]) ) :
+
+          $steps = [
+            'pending'    => 'Order Placed',
+            'processing' => 'Processing',
+            'shipped'    => 'Shipped',
+            'completed'  => 'Delivered',
+          ];
+
+          $status_flow = array_keys($steps);
+          $current_index = array_search($status, $status_flow);
+          ?>
+          <div class="bg-white p-4 shadow-sm mt-4 rounded-20">
+            <h6 class="fw-bold mb-3">Order Status</h6>
+            <div class="timeline">
+              <?php $i = 0; foreach ($steps as $key => $label):
+                $step_index = array_search($key, $status_flow);
+                $is_active = ($current_index !== false && $step_index !== false && $step_index <= $current_index);
+                $status_time = get_post_meta($order->get_id(), '_status_time_' . $key, true);
+                ?>
+                <div class="timeline-item <?php echo $is_active ? 'active' : ''; ?>">
+                  <small class="d-block fw-bold <?php echo $is_active ? 'text-rust' : 'text-muted'; ?>">
+                    <?php echo esc_html($label); ?>
+                  </small>
+                  <small class="text-muted">
+                    <?php
+                      if ($key === 'pending') {
+                        $date = $order->get_date_created();
+                        echo $date ? $date->date('F j, g:i A') : '';
+                      }
+                      elseif ($key === 'completed') {
+                        if ($status === 'completed' && $order->get_date_completed()) {
+                          echo $order->get_date_completed()->date('F j, g:i A');
+                        }
+                      }
+                      elseif ($status_time && $is_active) {
+                        echo date('F j, g:i A', $status_time);
+                      }
+                      else {
+                        echo ($is_active) ? 'In progress' : '';
+                      }
+                    ?>
+                  </small>
+                </div>
+              <?php $i++; endforeach; ?>
+            </div>
+          </div>
+          <?php 
+        endif; 
+      endif; 
+    ?>
   </div>
 
   <div class="col-lg-9 reveal-right my-account-tab-content">
