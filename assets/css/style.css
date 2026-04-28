@@ -346,8 +346,8 @@ a {
   outline: none;
 }
 
-.woocommerce-notices-wrapper .woocommerce-message,
-.woocommerce-notices-wrapper .woocommerce-error {
+.woocommerce-message,
+.woocommerce-error {
   outline: none;
 }
 

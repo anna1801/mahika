@@ -244,10 +244,10 @@ a {
 }
 .woocommerce-notices-wrapper {
     outline: none;
-    .woocommerce-message,
-    .woocommerce-error {
-        outline: none;
-    }
+}
+.woocommerce-message,
+.woocommerce-error {
+    outline: none;
 }
 .select2-container {
     .select2-selection {
