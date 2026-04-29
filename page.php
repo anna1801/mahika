@@ -4,7 +4,11 @@
 
 <?php 
     if ( is_checkout() ) {
-        $class = 'bg-light';
+        if ( is_order_received_page() ) {
+            $class = 'bg-cream';
+        } else {
+            $class = 'bg-light';
+        }
     } else {
         $class = '';
     }

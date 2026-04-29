@@ -391,29 +391,31 @@ a {
     @media (max-width: 767px) {
         padding: 1rem;
     }
-    #payment {
-        background: transparent;
-        .payment_methods {
-            border: 0 !important;
-            .woocommerce-PaymentMethod {
-                .woocommerce-PaymentBox {
-                    border-radius: var(--bs-border-radius-lg) !important;
-                    padding: 2rem;
-                    background: #f9f9f9;
-                    box-shadow: 0 4px 20px rgba(58, 27, 10, .12);
-                    &::before {
-                        border-color: #f9f9f9;
-                        border-right-color: transparent;
-                        border-left-color: transparent;
-                        border-top-color: transparent;
-                    }
+}
+#payment {
+    background: transparent !important;
+    .payment_methods {
+        border: 0 !important;
+        .woocommerce-PaymentMethod,
+        .wc_payment_method {
+            .woocommerce-PaymentBox,
+            .payment_box {
+                border-radius: var(--bs-border-radius-lg) !important;
+                padding: 2rem;
+                background: #f9f9f9;
+                box-shadow: 0 4px 20px rgba(58, 27, 10, .12);
+                &::before {
+                    border-color: #f9f9f9;
+                    border-right-color: transparent;
+                    border-left-color: transparent;
+                    border-top-color: transparent;
                 }
             }
         }
-        .form-row {
-            #place_order {
-                @include rust-button;
-            }
+    }
+    .form-row {
+        #place_order {
+            @include rust-button;
         }
     }
 }
@@ -486,5 +488,20 @@ a {
 .my-account-tab-content {
     .woocommerce-notices-wrapper ~ p {
         display: none;
+    }
+}
+#order_review {
+    table {
+        tfoot {
+            .class-total,
+            .value-total {
+                font-size: 1rem;
+                font-weight: 700;
+                line-height: 1.5;
+                color: #212529 !important;
+                padding-top: 18px !important;
+                padding-bottom: 18px !important;
+            }
+        }
     }
 }

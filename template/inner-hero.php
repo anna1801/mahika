@@ -12,6 +12,41 @@
         if( is_account_page() && !is_user_logged_in() ) {
             $title = 'Login';
             $current = 'Login';
+        } 
+        elseif ( is_wc_endpoint_url('order-received') ) {
+            $title = 'Order Success';
+            $current = 'Order Success';
+        }
+        elseif ( is_wc_endpoint_url('order-pay') ) {
+            $title = 'Pay for Order';
+            $current = 'Pay for Order';
+        }
+        elseif ( is_account_page() ) {
+
+            if ( is_wc_endpoint_url('edit-account') ) {
+                $title = 'Account Details';
+                $next = '<span class="mx-2">/</span> Settings';
+            } elseif ( is_wc_endpoint_url('orders') ) {
+                $title = 'Recent Orders';
+                $next = '<span class="mx-2">/</span> Recent Orders';
+            } elseif ( is_wc_endpoint_url('view-order') ) {
+                $order_id = isset($wp->query_vars['view-order']) ? $wp->query_vars['view-order'] : '';
+                $title = 'Order #'.$order_id;
+                $next = '<span class="mx-2">/</span>Order';
+            } elseif ( is_wc_endpoint_url('downloads') ) {
+                $title = 'Downloads';
+                $next = '<span class="mx-2">/</span> Downloads';
+            } elseif ( is_wc_endpoint_url('edit-address') ) {
+                $title = 'Addresses';
+                $next = '<span class="mx-2">/</span> Addresses';
+            } elseif ( is_wc_endpoint_url('payment-methods') || is_wc_endpoint_url('add-payment-method') ) {
+                $title = 'Payment Methods';
+                $next = '<span class="mx-2">/</span> Payment Methods';
+            } else {
+                $title = get_the_title();
+                $next = '';
+            }
+    
         }
 
     } elseif (is_search()) {
@@ -49,8 +84,18 @@
                     echo '<a href="'.get_permalink( wc_get_page_id( 'shop' ) ).'">'.get_the_title(wc_get_page_id('shop')).'</a>';
                     echo '<span class="mx-2">/</span>';
                 }
+
+                if ( is_account_page() )  {
+                    if ( is_wc_endpoint_url() ) {
+                        echo '<a href="'.get_permalink().'">'.get_the_title().'</a>';
+                        echo '<span>' . $next . '</span>';
+                    } else {
+                        echo '<span>' . $current . '</span>';
+                    }
+                } else {
+                    echo '<span>' . $current . '</span>';
+                }
             ?>
-            <span><?php echo $current; ?></span>
         </div>
     </div>
 </section>

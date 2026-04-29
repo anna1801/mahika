@@ -514,15 +514,18 @@ a {
   }
 }
 
-#add_payment_method #payment {
-  background: transparent;
+#payment {
+  background: transparent !important;
 }
 
-#add_payment_method #payment .payment_methods {
+#payment .payment_methods {
   border: 0 !important;
 }
 
-#add_payment_method #payment .payment_methods .woocommerce-PaymentMethod .woocommerce-PaymentBox {
+#payment .payment_methods .woocommerce-PaymentMethod .woocommerce-PaymentBox,
+#payment .payment_methods .woocommerce-PaymentMethod .payment_box,
+#payment .payment_methods .wc_payment_method .woocommerce-PaymentBox,
+#payment .payment_methods .wc_payment_method .payment_box {
   border-radius: var(--bs-border-radius-lg) !important;
   padding: 2rem;
   background: #f9f9f9;
@@ -530,14 +533,17 @@ a {
           box-shadow: 0 4px 20px rgba(58, 27, 10, 0.12);
 }
 
-#add_payment_method #payment .payment_methods .woocommerce-PaymentMethod .woocommerce-PaymentBox::before {
+#payment .payment_methods .woocommerce-PaymentMethod .woocommerce-PaymentBox::before,
+#payment .payment_methods .woocommerce-PaymentMethod .payment_box::before,
+#payment .payment_methods .wc_payment_method .woocommerce-PaymentBox::before,
+#payment .payment_methods .wc_payment_method .payment_box::before {
   border-color: #f9f9f9;
   border-right-color: transparent;
   border-left-color: transparent;
   border-top-color: transparent;
 }
 
-#add_payment_method #payment .form-row #place_order {
+#payment .form-row #place_order {
   background: var(--rust);
   color: #fff;
   border: none;
@@ -553,7 +559,7 @@ a {
   transition: background .25s, transform .2s, box-shadow .25s, -webkit-transform .2s, -webkit-box-shadow .25s;
 }
 
-#add_payment_method #payment .form-row #place_order:hover {
+#payment .form-row #place_order:hover {
   background: var(--rust-dk);
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
@@ -662,6 +668,16 @@ a {
 
 .my-account-tab-content .woocommerce-notices-wrapper ~ p {
   display: none;
+}
+
+#order_review table tfoot .class-total,
+#order_review table tfoot .value-total {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #212529 !important;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
 }
 
 footer .menu-sitemap-container .current-menu-item a {
